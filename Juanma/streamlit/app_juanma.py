@@ -1,10 +1,17 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import os
 
 # Cargar el modelo y los datos
-with open('../Datos/similarity_matrix.pkl', 'rb') as f:
-    similarity_matrix = pickle.load(f)
+#with open('.../Datos/similarity_matrix.pkl', 'rb') as f:
+#   similarity_matrix = pickle.load(f)
+
+model_path = os.path.join(os.path.dirname(__file__), '../Datos/similarity_matrix.pkl')
+
+# Cargar el modelo desde el archivo .pkl
+with open(model_path, 'rb') as file:
+    data = pickle.load(file)
 
 
 # Cargar los datos de negocios (restaurantes) agrupados por reseñas
