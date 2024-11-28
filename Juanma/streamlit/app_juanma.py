@@ -11,11 +11,18 @@ model_path = os.path.join(os.path.dirname(__file__), '../Datos/similarity_matrix
 
 # Cargar el modelo desde el archivo .pkl
 with open(model_path, 'rb') as file:
-    data = pickle.load(file)
+    similarity_matrix = pickle.load(file)
 
 
 # Cargar los datos de negocios (restaurantes) agrupados por reseñas
-business_reviews_grouped = pd.read_csv('business_reviews_grouped.csv')
+#business_reviews_grouped = pd.read_csv('business_reviews_grouped.csv')
+import os
+import pandas as pd
+
+# Ruta relativa al archivo Parquet
+data_path = os.path.join(os.path.dirname(__file__), '../business.parquet')
+business_reviews_grouped = pd.read_parquet(data_path)
+
 
 # Función de recomendación
 def recommend_restaurants_based_on_reviews(restaurant_id, n=15):
