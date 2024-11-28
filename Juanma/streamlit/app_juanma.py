@@ -3,8 +3,9 @@ import pickle
 import pandas as pd
 
 # Cargar el modelo y los datos
-with open('.../Datos/similarity_matrix.pkl', 'rb') as f:
+with open('../Datos/similarity_matrix.pkl', 'rb') as f:
     similarity_matrix = pickle.load(f)
+
 
 # Cargar los datos de negocios (restaurantes) agrupados por reseñas
 business_reviews_grouped = pd.read_csv('business_reviews_grouped.csv')
