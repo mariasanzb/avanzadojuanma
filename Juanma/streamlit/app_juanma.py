@@ -37,16 +37,16 @@ def recommend_restaurants_based_on_reviews(restaurant_id, n=15):
 
 # Título y descripción
 st.title("Recomendador de Restaurantes")
-st.markdown("Ingresa un `user_id` para obtener recomendaciones personalizadas de restaurantes similares.")
+st.markdown("Ingresa un `restaurant_id` para obtener recomendaciones personalizadas de restaurantes similares.")
 
-# Entrada de texto para el user_id
-user_id = st.text_input("Ingrese su User ID", "Bf87HcPERF9yiSjb2tQBqw")
+# Entrada de texto para el restaurant_id
+restaurant_id = st.text_input("Ingrese un Restaurant ID", "Bf87HcPERF9yiSjb2tQBqw")
 
 # Botón para obtener recomendaciones
 if st.button('Obtener Recomendaciones'):
     try:
-        recommendations = recommend_restaurants_based_on_reviews(user_id)
-        st.subheader(f"Restaurantes recomendados para el usuario {user_id}:")
+        recommendations = recommend_restaurants_based_on_reviews(restaurant_id)
+        st.subheader(f"Restaurantes recomendados para el usuario {restaurant_id}:")
         for index, row in recommendations.iterrows():
             st.write(f"**{row['name']}** - {row['categories']} - {row['city']}")
     except ValueError as e:
